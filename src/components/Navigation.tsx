@@ -122,7 +122,7 @@ export function Navigation() {
         "sticky top-0 z-50 w-full border-b transition-all duration-300",
         isScrolled
           ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-lg"
-          : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
       )}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -131,10 +131,7 @@ export function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link to="/" className="flex items-center gap-2">
               <motion.div
                 className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground"
@@ -156,7 +153,8 @@ export function Navigation() {
               <motion.span
                 className="font-display text-xl font-bold bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent"
                 whileHover={{
-                  backgroundImage: "linear-gradient(45deg, #FFD700, #000, #FFD700)",
+                  backgroundImage:
+                    "linear-gradient(45deg, #FFD700, #000, #FFD700)",
                 }}
               >
                 DigitalMaster
@@ -189,7 +187,10 @@ export function Navigation() {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/success-stories" className="flex items-center gap-2">
+                  <Link
+                    to="/success-stories"
+                    className="flex items-center gap-2"
+                  >
                     <Award className="h-4 w-4" />
                     Success Stories
                   </Link>
@@ -345,10 +346,20 @@ export function Navigation() {
                     Start Learning
                   </Button>
                   <div className="flex gap-2">
-                    <Button variant="outline" size="sm" asChild className="flex-1">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      asChild
+                      className="flex-1"
+                    >
                       <Link to="/about">About</Link>
                     </Button>
-                    <Button variant="outline" size="sm" asChild className="flex-1">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      asChild
+                      className="flex-1"
+                    >
                       <Link to="/contact">Contact</Link>
                     </Button>
                   </div>
@@ -358,6 +369,6 @@ export function Navigation() {
           </Sheet>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
