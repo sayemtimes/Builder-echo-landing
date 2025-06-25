@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import Community from "./pages/Community";
 import HelpCenter from "./pages/HelpCenter";
 import SuccessStories from "./pages/SuccessStories";
+import Pricing from "./pages/Pricing";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/community" element={<Community />} />
           <Route path="/help" element={<HelpCenter />} />
           <Route path="/success-stories" element={<SuccessStories />} />
+          <Route path="/pricing" element={<Pricing />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

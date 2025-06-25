@@ -118,6 +118,12 @@ export function Navigation() {
                     Success Stories
                   </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/pricing" className="flex items-center gap-2">
+                    <DollarSign className="h-4 w-4" />
+                    Pricing
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link to="/help" className="flex items-center gap-2">
@@ -137,9 +143,11 @@ export function Navigation() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="outline" size="sm">
-              <BookOpen className="h-4 w-4 mr-2" />
-              Start Learning
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/pricing">
+                <BookOpen className="h-4 w-4 mr-2" />
+                Start Learning
+              </Link>
             </Button>
           </div>
 
