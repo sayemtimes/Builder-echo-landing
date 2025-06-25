@@ -480,57 +480,252 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-muted/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold">
+      <section className="py-24 bg-muted/20 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0">
+          <motion.div
+            animate={{
+              rotate: [0, 360],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 30,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute -top-1/4 -right-1/4 w-96 h-96 bg-primary/3 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              rotate: [360, 0],
+              scale: [1.1, 1, 1.1],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute -bottom-1/4 -left-1/4 w-80 h-80 bg-accent/3 rounded-full blur-3xl"
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <FadeInWrapper className="text-center space-y-4 mb-16">
+            <motion.h2
+              className="text-3xl lg:text-4xl font-bold"
+              animate={{
+                backgroundImage: [
+                  "linear-gradient(45deg, #000, #FFD700, #000)",
+                  "linear-gradient(90deg, #FFD700, #000, #FFD700)",
+                  "linear-gradient(135deg, #000, #FFD700, #000)",
+                ],
+              }}
+              transition={{ duration: 5, repeat: Infinity }}
+              style={{
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+              }}
+            >
               Why Choose DigitalMaster?
-            </h2>
+            </motion.h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Our comprehensive platform is designed by experts to help you
               succeed in the digital marketing world.
             </p>
-          </div>
+          </FadeInWrapper>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerContainer
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            staggerDelay={0.2}
+          >
             {features.map((feature, index) => (
-              <Card
-                key={index}
-                className="text-center border-0 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <CardContent className="pt-8 space-y-4">
-                  <div className="mx-auto h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <StaggerItem key={index}>
+                <HoverScale scale={1.05}>
+                  <motion.div
+                    whileHover={{
+                      boxShadow: "0 20px 40px rgba(255, 215, 0, 0.1)",
+                    }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-500 bg-gradient-to-b from-card to-card/80 group overflow-hidden relative">
+                      {/* Card background effect */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100"
+                        transition={{ duration: 0.5 }}
+                      />
+
+                      <CardContent className="pt-8 space-y-4 relative z-10">
+                        <motion.div
+                          className="mx-auto h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+                          animate={{
+                            rotate: [0, 10, -10, 0],
+                          }}
+                          transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            delay: index * 0.5,
+                            ease: "easeInOut",
+                          }}
+                          whileHover={{
+                            scale: 1.1,
+                            rotate: 15,
+                          }}
+                        >
+                          {feature.icon}
+                        </motion.div>
+
+                        <motion.h3
+                          className="text-lg font-semibold group-hover:text-primary transition-colors"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3 + index * 0.1 }}
+                        >
+                          {feature.title}
+                        </motion.h3>
+
+                        <motion.p
+                          className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground/80 transition-colors"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.4 + index * 0.1 }}
+                        >
+                          {feature.description}
+                        </motion.p>
+
+                        {/* Floating particles effect */}
+                        <motion.div
+                          className="absolute top-4 right-4 w-2 h-2 bg-primary/30 rounded-full"
+                          animate={{
+                            scale: [0, 1, 0],
+                            opacity: [0, 1, 0],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            delay: index * 0.7,
+                          }}
+                        />
+                        <motion.div
+                          className="absolute bottom-4 left-4 w-1 h-1 bg-accent/40 rounded-full"
+                          animate={{
+                            scale: [0, 1.5, 0],
+                            opacity: [0, 1, 0],
+                          }}
+                          transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            delay: index * 0.9,
+                          }}
+                        />
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </HoverScale>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Learning Modules Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold">
-              Complete Learning Modules
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+      <section className="py-24 relative">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+                             radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+                             radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.1) 0%, transparent 50%)`,
+            }}
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <FadeInWrapper className="text-center space-y-4 mb-16">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+                Complete Learning Modules
+              </h2>
+            </motion.div>
+            <motion.p
+              className="text-xl text-muted-foreground max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
               Master every aspect of digital marketing with our structured,
               goal-oriented learning paths.
-            </p>
-          </div>
+            </motion.p>
+          </FadeInWrapper>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <StaggerContainer
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            staggerDelay={0.15}
+          >
             {learningModules.map((module, index) => (
-              <LearningCard key={index} {...module} />
+              <StaggerItem key={index}>
+                <LearningCard {...module} />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
+
+          {/* Call to action */}
+          <FadeInWrapper delay={1} className="text-center mt-16">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+            >
+              <Card className="max-w-2xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
+                <CardContent className="p-8 text-center space-y-4">
+                  <motion.div
+                    animate={{
+                      rotate: [0, 360],
+                    }}
+                    transition={{
+                      duration: 10,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  >
+                    <Target className="h-12 w-12 text-primary mx-auto" />
+                  </motion.div>
+                  <h3 className="text-2xl font-bold">
+                    Ready to Start Your Journey?
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Join thousands of successful students who have transformed
+                    their careers
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                    <PulseButton>
+                      <Button
+                        size="lg"
+                        className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+                      >
+                        <BookOpen className="mr-2 h-5 w-5" />
+                        Start Free Trial
+                      </Button>
+                    </PulseButton>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="border-primary/20"
+                    >
+                      <Calendar className="mr-2 h-5 w-5" />
+                      Schedule Demo
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </FadeInWrapper>
         </div>
       </section>
 
