@@ -2,6 +2,13 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import {
   Menu,
@@ -13,6 +20,12 @@ import {
   DollarSign,
   BookOpen,
   Zap,
+  User,
+  Users,
+  HelpCircle,
+  Award,
+  ChevronDown,
+  BarChart3,
 } from "lucide-react";
 
 const navigationItems = [
@@ -75,6 +88,51 @@ export function Navigation() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
             <NavigationContent />
+
+            {/* More dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="gap-1">
+                  More <ChevronDown className="h-3 w-3" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuItem asChild>
+                  <Link to="/dashboard" className="flex items-center gap-2">
+                    <BarChart3 className="h-4 w-4" />
+                    Dashboard
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/community" className="flex items-center gap-2">
+                    <Users className="h-4 w-4" />
+                    Community
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link
+                    to="/success-stories"
+                    className="flex items-center gap-2"
+                  >
+                    <Award className="h-4 w-4" />
+                    Success Stories
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/help" className="flex items-center gap-2">
+                    <HelpCircle className="h-4 w-4" />
+                    Help Center
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/profile" className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    Profile
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
           {/* CTA Button */}
@@ -104,6 +162,48 @@ export function Navigation() {
                 </div>
                 <nav className="flex flex-col gap-2">
                   <NavigationContent />
+
+                  {/* Additional mobile navigation items */}
+                  <Link
+                    to="/dashboard"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground text-muted-foreground"
+                  >
+                    <BarChart3 className="h-4 w-4" />
+                    Dashboard
+                  </Link>
+                  <Link
+                    to="/community"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground text-muted-foreground"
+                  >
+                    <Users className="h-4 w-4" />
+                    Community
+                  </Link>
+                  <Link
+                    to="/success-stories"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground text-muted-foreground"
+                  >
+                    <Award className="h-4 w-4" />
+                    Success Stories
+                  </Link>
+                  <Link
+                    to="/help"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground text-muted-foreground"
+                  >
+                    <HelpCircle className="h-4 w-4" />
+                    Help Center
+                  </Link>
+                  <Link
+                    to="/profile"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground text-muted-foreground"
+                  >
+                    <User className="h-4 w-4" />
+                    Profile
+                  </Link>
                 </nav>
                 <div className="pt-4 border-t space-y-2">
                   <Button className="w-full">
