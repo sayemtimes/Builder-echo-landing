@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/Navigation";
 import { LearningCard } from "@/components/LearningCard";
 import { MotivationalQuotes } from "@/components/MotivationalQuotes";
+import { Link } from "react-router-dom";
 import {
   PlayCircle,
   TrendingUp,
@@ -364,10 +365,38 @@ const Index = () => {
             <div className="space-y-4">
               <h4 className="font-semibold">Learning</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>YouTube SEO</li>
-                <li>YouTube Marketing</li>
-                <li>Website SEO</li>
-                <li>Communication Tools</li>
+                <li>
+                  <Link
+                    to="/youtube-seo"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    YouTube SEO
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/youtube-marketing"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    YouTube Marketing
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/website-seo"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Website SEO
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/communication-tools"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Communication Tools
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -384,10 +413,24 @@ const Index = () => {
             <div className="space-y-4">
               <h4 className="font-semibold">Company</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>About Us</li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/contact"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
                 <li>Privacy Policy</li>
                 <li>Terms of Service</li>
-                <li>Blog</li>
               </ul>
             </div>
           </div>
