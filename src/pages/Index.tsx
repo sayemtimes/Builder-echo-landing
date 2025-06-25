@@ -6,6 +6,17 @@ import Footer from "@/components/Footer";
 import { LearningCard } from "@/components/LearningCard";
 import { MotivationalQuotes } from "@/components/MotivationalQuotes";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import {
+  FadeInWrapper,
+  SlideInWrapper,
+  StaggerContainer,
+  StaggerItem,
+  HoverScale,
+  FloatingAnimation,
+  ScaleInWrapper,
+} from "@/components/AnimatedWrapper";
+import { PulseButton } from "@/components/LoadingComponents";
 import {
   PlayCircle,
   TrendingUp,
@@ -22,6 +33,10 @@ import {
   BarChart3,
   Lightbulb,
   Award,
+  Sparkles,
+  TrendingDown,
+  Calendar,
+  Shield,
 } from "lucide-react";
 
 const learningModules = [
@@ -137,104 +152,329 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background pt-16 pb-24">
-        <div className="container mx-auto px-4">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              rotate: [360, 180, 0],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="space-y-4">
-                <Badge variant="secondary" className="w-fit">
-                  <Zap className="h-3 w-3 mr-1" />
-                  New Course Available
-                </Badge>
-                <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                  Master <span className="text-primary">Digital Marketing</span>{" "}
-                  & <span className="text-accent">Earn $10K</span> Monthly
-                </h1>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  Learn YouTube SEO, digital marketing, and website optimization
-                  with bilingual support. Transform your skills into a
-                  profitable career with our comprehensive learning platform.
-                </p>
-              </div>
+              <FadeInWrapper className="space-y-4">
+                <SlideInWrapper direction="down" delay={0.2}>
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <Badge
+                      variant="secondary"
+                      className="w-fit bg-primary/10 text-primary border-primary/20"
+                    >
+                      <motion.div
+                        animate={{ rotate: [0, 360] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <Sparkles className="h-3 w-3 mr-1" />
+                      </motion.div>
+                      New Course Available
+                    </Badge>
+                  </motion.div>
+                </SlideInWrapper>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-6">
-                  Start Learning Today
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 py-6"
-                >
-                  <PlayCircle className="mr-2 h-5 w-5" />
-                  Watch Demo
-                </Button>
-              </div>
+                <SlideInWrapper direction="left" delay={0.4}>
+                  <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+                    Master{" "}
+                    <motion.span
+                      className="text-primary relative inline-block"
+                      animate={{
+                        textShadow: [
+                          "0 0 0px rgba(255, 215, 0, 0)",
+                          "0 0 20px rgba(255, 215, 0, 0.5)",
+                          "0 0 0px rgba(255, 215, 0, 0)",
+                        ],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      Digital Marketing
+                    </motion.span>{" "}
+                    &{" "}
+                    <motion.span
+                      className="text-accent relative inline-block"
+                      animate={{
+                        scale: [1, 1.05, 1],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1,
+                      }}
+                    >
+                      Earn $10K
+                    </motion.span>{" "}
+                    Monthly
+                  </h1>
+                </SlideInWrapper>
 
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-8">
+                <SlideInWrapper direction="left" delay={0.6}>
+                  <p className="text-xl text-muted-foreground leading-relaxed">
+                    Learn YouTube SEO, digital marketing, and website
+                    optimization with bilingual support. Transform your skills
+                    into a profitable career with our comprehensive learning
+                    platform.
+                  </p>
+                </SlideInWrapper>
+              </FadeInWrapper>
+
+              <SlideInWrapper direction="up" delay={0.8}>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <PulseButton>
+                    <HoverScale>
+                      <Button
+                        size="lg"
+                        className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+                      >
+                        <motion.span className="flex items-center gap-2">
+                          Start Learning Today
+                          <motion.div
+                            animate={{ x: [0, 5, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                          >
+                            <ArrowRight className="h-5 w-5" />
+                          </motion.div>
+                        </motion.span>
+                      </Button>
+                    </HoverScale>
+                  </PulseButton>
+
+                  <HoverScale>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="text-lg px-8 py-6 border-primary/20 hover:bg-primary/5"
+                    >
+                      <motion.div
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 1, repeat: Infinity }}
+                      >
+                        <PlayCircle className="mr-2 h-5 w-5" />
+                      </motion.div>
+                      Watch Demo
+                    </Button>
+                  </HoverScale>
+                </div>
+              </SlideInWrapper>
+
+              <StaggerContainer
+                className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-8"
+                staggerDelay={0.15}
+              >
                 {stats.map((stat, index) => (
-                  <div key={index} className="text-center space-y-2">
-                    <div className="flex items-center justify-center text-primary">
-                      {stat.icon}
-                    </div>
-                    <div className="text-2xl font-bold">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {stat.label}
-                    </div>
-                  </div>
+                  <StaggerItem key={index}>
+                    <HoverScale>
+                      <div className="text-center space-y-2 p-4 rounded-lg bg-card/50 hover:bg-card transition-colors">
+                        <motion.div
+                          className="flex items-center justify-center text-primary"
+                          animate={{
+                            rotate: [0, 10, -10, 0],
+                            scale: [1, 1.1, 1],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: index * 0.2,
+                          }}
+                        >
+                          {stat.icon}
+                        </motion.div>
+                        <motion.div
+                          className="text-2xl font-bold"
+                          animate={{
+                            color: ["#000", "#FFD700", "#000"],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            delay: index * 0.3,
+                          }}
+                        >
+                          {stat.value}
+                        </motion.div>
+                        <div className="text-sm text-muted-foreground">
+                          {stat.label}
+                        </div>
+                      </div>
+                    </HoverScale>
+                  </StaggerItem>
                 ))}
+              </StaggerContainer>
+            </div>
+
+            <SlideInWrapper direction="right" delay={1}>
+              <div className="relative">
+                <FloatingAnimation>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-3xl"></div>
+                </FloatingAnimation>
+
+                <ScaleInWrapper delay={1.2}>
+                  <Card className="relative border-0 shadow-2xl bg-gradient-to-b from-card to-card/50 overflow-hidden">
+                    {/* Animated background */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"
+                      animate={{
+                        background: [
+                          "linear-gradient(45deg, rgba(255,215,0,0.05), transparent, rgba(255,215,0,0.02))",
+                          "linear-gradient(90deg, rgba(255,215,0,0.02), transparent, rgba(255,215,0,0.05))",
+                          "linear-gradient(135deg, rgba(255,215,0,0.05), transparent, rgba(255,215,0,0.02))",
+                        ],
+                      }}
+                      transition={{ duration: 5, repeat: Infinity }}
+                    />
+
+                    <CardHeader className="text-center space-y-4 relative z-10">
+                      <motion.div
+                        className="mx-auto h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center"
+                        animate={{
+                          rotate: [0, 5, -5, 0],
+                          scale: [1, 1.05, 1],
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                      >
+                        <BarChart3 className="h-8 w-8 text-primary" />
+                      </motion.div>
+                      <CardTitle className="text-2xl">
+                        Your Success Dashboard
+                      </CardTitle>
+                    </CardHeader>
+
+                    <CardContent className="space-y-6 relative z-10">
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-medium">
+                            Monthly Revenue Goal
+                          </span>
+                          <motion.span
+                            className="text-2xl font-bold text-primary"
+                            animate={{
+                              scale: [1, 1.1, 1],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            }}
+                          >
+                            $10,000
+                          </motion.span>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span>Progress to Goal</span>
+                            <span>75%</span>
+                          </div>
+                          <div className="h-3 bg-secondary rounded-full overflow-hidden">
+                            <motion.div
+                              className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                              initial={{ width: 0 }}
+                              animate={{ width: "75%" }}
+                              transition={{
+                                duration: 2,
+                                ease: "easeOut",
+                                delay: 1.5,
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <motion.div
+                          className="text-center p-4 bg-secondary rounded-lg"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <motion.div
+                            className="text-lg font-bold text-primary"
+                            animate={{
+                              scale: [1, 1.1, 1],
+                            }}
+                            transition={{
+                              duration: 3,
+                              repeat: Infinity,
+                              delay: 2,
+                            }}
+                          >
+                            142
+                          </motion.div>
+                          <div className="text-xs text-muted-foreground">
+                            Clients Served
+                          </div>
+                        </motion.div>
+                        <motion.div
+                          className="text-center p-4 bg-secondary rounded-lg"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <motion.div
+                            className="text-lg font-bold text-accent"
+                            animate={{
+                              scale: [1, 1.1, 1],
+                            }}
+                            transition={{
+                              duration: 3,
+                              repeat: Infinity,
+                              delay: 2.5,
+                            }}
+                          >
+                            98%
+                          </motion.div>
+                          <div className="text-xs text-muted-foreground">
+                            Satisfaction Rate
+                          </div>
+                        </motion.div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </ScaleInWrapper>
               </div>
-            </div>
-
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-3xl"></div>
-              <Card className="relative border-0 shadow-2xl">
-                <CardHeader className="text-center space-y-4">
-                  <div className="mx-auto h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center">
-                    <BarChart3 className="h-8 w-8 text-primary" />
-                  </div>
-                  <CardTitle className="text-2xl">
-                    Your Success Dashboard
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">
-                        Monthly Revenue Goal
-                      </span>
-                      <span className="text-2xl font-bold text-primary">
-                        $10,000
-                      </span>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span>Progress to Goal</span>
-                        <span>75%</span>
-                      </div>
-                      <div className="h-3 bg-secondary rounded-full overflow-hidden">
-                        <div className="h-full w-3/4 bg-gradient-to-r from-primary to-accent rounded-full"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center p-4 bg-secondary rounded-lg">
-                      <div className="text-lg font-bold text-primary">142</div>
-                      <div className="text-xs text-muted-foreground">
-                        Clients Served
-                      </div>
-                    </div>
-                    <div className="text-center p-4 bg-secondary rounded-lg">
-                      <div className="text-lg font-bold text-accent">98%</div>
-                      <div className="text-xs text-muted-foreground">
-                        Satisfaction Rate
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            </SlideInWrapper>
           </div>
         </div>
       </section>
