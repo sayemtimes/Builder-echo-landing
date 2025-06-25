@@ -7,6 +7,7 @@ import { Suspense, lazy, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { PageLoader } from "@/components/LoadingComponents";
 import { performanceLogger } from "@/utils/performance";
+import { initializeDefaultData } from "@/lib/dataManager";
 
 // Immediate load for critical pages
 import Index from "./pages/Index";
@@ -45,6 +46,9 @@ const App = () => {
   useEffect(() => {
     // Performance monitoring
     performanceLogger.markStart("app-init");
+
+    // Initialize data management system
+    initializeDefaultData();
 
     // Measure page load performance
     const measurePerformance = () => {
