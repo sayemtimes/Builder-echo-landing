@@ -105,11 +105,29 @@ export function Navigation() {
                 <nav className="flex flex-col gap-2">
                   <NavigationContent />
                 </nav>
-                <div className="pt-4 border-t">
+                <div className="pt-4 border-t space-y-2">
                   <Button className="w-full">
                     <BookOpen className="h-4 w-4 mr-2" />
                     Start Learning
                   </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      asChild
+                      className="flex-1"
+                    >
+                      <Link to="/about">About</Link>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      asChild
+                      className="flex-1"
+                    >
+                      <Link to="/contact">Contact</Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </SheetContent>
