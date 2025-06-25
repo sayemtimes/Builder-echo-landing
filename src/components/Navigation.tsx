@@ -225,6 +225,38 @@ export function Navigation() {
                     Help Center
                   </Link>
                   <Link
+                    to="/blog"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground text-muted-foreground"
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    Blog
+                  </Link>
+                  <Link
+                    to="/resources"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground text-muted-foreground"
+                  >
+                    <Download className="h-4 w-4" />
+                    Resources
+                  </Link>
+                  <Link
+                    to="/events"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground text-muted-foreground"
+                  >
+                    <Calendar className="h-4 w-4" />
+                    Events
+                  </Link>
+                  <Link
+                    to="/pricing"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground text-muted-foreground"
+                  >
+                    <DollarSign className="h-4 w-4" />
+                    Pricing
+                  </Link>
+                  <Link
                     to="/profile"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground text-muted-foreground"

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { LearningCard } from "@/components/LearningCard";
 import { MotivationalQuotes } from "@/components/MotivationalQuotes";
 import { Link } from "react-router-dom";
@@ -343,103 +344,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-background border-t py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                  <Zap className="h-5 w-5" />
-                </div>
-                <span className="font-display text-xl font-bold">
-                  DigitalMaster
-                </span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                Your complete platform for mastering digital marketing and
-                achieving financial freedom.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="font-semibold">Learning</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <Link
-                    to="/youtube-seo"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    YouTube SEO
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/youtube-marketing"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    YouTube Marketing
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/website-seo"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    Website SEO
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/communication-tools"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    Communication Tools
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="font-semibold">Support</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Help Center</li>
-                <li>Community</li>
-                <li>Contact Us</li>
-                <li>Success Stories</li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="font-semibold">Company</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <Link
-                    to="/about"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/contact"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    Contact Us
-                  </Link>
-                </li>
-                <li>Privacy Policy</li>
-                <li>Terms of Service</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 DigitalMaster. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
