@@ -26,6 +26,8 @@ import {
   Award,
   ChevronDown,
   BarChart3,
+  Download,
+  Calendar,
 } from "lucide-react";
 
 const navigationItems = [
@@ -122,6 +124,24 @@ export function Navigation() {
                   <Link to="/pricing" className="flex items-center gap-2">
                     <DollarSign className="h-4 w-4" />
                     Pricing
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/blog" className="flex items-center gap-2">
+                    <BookOpen className="h-4 w-4" />
+                    Blog
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/resources" className="flex items-center gap-2">
+                    <Download className="h-4 w-4" />
+                    Resources
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/events" className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    Live Events
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
