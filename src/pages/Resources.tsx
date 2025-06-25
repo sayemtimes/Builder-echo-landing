@@ -20,7 +20,6 @@ import {
   Image,
   Headphones,
   Calculator,
-  FileText,
   Star,
   Clock,
   Users,
