@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
+import Footer from "@/components/Footer";
 import { LearningCard } from "@/components/LearningCard";
 import { MotivationalQuotes } from "@/components/MotivationalQuotes";
 import { Link } from "react-router-dom";
